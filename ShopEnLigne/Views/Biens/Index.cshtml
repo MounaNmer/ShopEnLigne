@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/styleBien.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ShopEnLigne.styles.css" asp-append-version="true" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>ECommerce-ShoppingCart | Korsat X Parmaga</title>
+
+    <!-- box icons  -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <!-- Section1   (header)  -->
+    <section>
+        <!-- NAV  -->
+        <div class="nav container">
+            <!-- CART ICON  -->
+            <i class='bx bx-shopping-bag' id="cart-icon"></i>
+
+            <!-- CART  -->
+            <div class="cart">
+                <h2 class="cart-title">Your Cart</h2>
+
+                <!-- CONTENT  -->
+                <div class="cart-content">
+                </div>
+
+                <!-- TOTAL   -->
+                <div class="total">
+                    <div class="total-title">Total</div>
+                    <div class="total-price">$0</div>
+                </div>
+                <!-- BUY BUTTON  -->
+                <button type="button" class="btn-buy">Buy Now</button>
+                <!-- CART CLOSE  -->
+                <i class='bx bx-x' id="cart-close"></i>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SHOP SECTION  -->
+    <section class="shop container">
+        
+
+        
+
+        <!-- CONTENT  -->
+        <div class="shop-content">
+            @foreach (var bien in Model)
+            {
+
+                <div class="product-box">
+                    <a href="@Url.Action("Details", "Biens", new { id = bien.Id })">
+                        <img src="~/Images/@bien.Photo" alt="" class="product-img">
+                        <h2 class="product-title">@bien.Titre</h2>
+                        <span class="product-price">$@bien.Prix</span>                      
+                    </a>
+                    <i class='bx bx-shopping-bag add-cart'></i>
+                </div>
+            }
+
+        </div>
+    </section>
+
+    <!-- link js  -->
+    <!--<script src="~/js/main.js"></script>-->
+</body>
+
+</html>

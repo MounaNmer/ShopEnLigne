@@ -1,0 +1,90 @@
+﻿@model IEnumerable<ShopEnLigne.Models.Historique>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bien)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Date.ToString("dd/MM/yyyy HH:mm:ss")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bien.Titre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<style type="text/css">
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .table {
+        width: 80%;
+        margin: 50px auto;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .table th {
+            background-color: #E5D283;
+            color: white;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #ddd;
+        }
+
+        .table tr:hover {
+            background-color: #777;
+            color: white;
+        }
+
+    .enlace {
+        color: #333;
+        text-decoration: none;
+    }
+
+        .enlace:hover {
+            color: #777;
+        }
+</style>
